@@ -9,7 +9,6 @@ void writeFile(const vector<pair<int, vector<int>*>> &sol, string fileIn) {
     fstream flujoOut;
     flujoOut.open(output.c_str(), ios::out);
 
-    bool last = !sol[sol.size()-1].second->empty();
     vector<pair<int, vector<int>*>> solution;
     solution.reserve(sol.size());
     for (const auto &i : sol) {
@@ -41,7 +40,7 @@ vector<pair<int, vector<int>*>> firstSol(problemInfo &pi) {
 
     multimap<int, pair<int, libraryInfo>> libraries;
     for (int l = 0; l < pi.L; l++) {
-        libraries.insert(make_pair(pi.libraries[l].signupTime, make_pair(l, pi.libraries[l])));
+        libraries.insert(make_pair((double) ((double) pi.libraries[l].signupTime) / (double) pi.libraries[l].shipsPerDay , make_pair(l, pi.libraries[l])));
     }
 
     vector<pair<pair<int, libraryInfo>, int>> librariesOrd; // id, libInfo, next book
@@ -90,10 +89,14 @@ vector<pair<int, vector<int>*>> firstSol(problemInfo &pi) {
 
 #include "problemInfo.h"
 int main() {
-    problemInfo pi = readFile("../problema/f_libraries_of_the_world.txt");
+    const string files[] = {"a_example", "b_read_on", "c_incunabula", "d_tough_choices", "e_so_many_books", "f_libraries_of_the_world"};
 
-    vector<pair<int, vector<int>*>> sol = firstSol(pi);
+    for (int i = 0; i < 6; i++) {
+        problemInfo pi = readFile("../problema/" + files[i] + ".txt");
 
-    writeFile(sol, "../problema/f_sol.txt");
+        vector<pair<int, vector<int>*>> sol = firstSol(pi);
+
+        writeFile(sol, "../problema/" + files[i] + "_sol.txt");
+    }
     return 0;
 }

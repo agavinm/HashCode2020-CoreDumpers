@@ -42,12 +42,17 @@ problemInfo readFile( std::string fileIn) {
         libraryInfo info(nBooks, signupTime, shipsPerDay, i);
 
 
+        // Ordering books by score
+        multimap<int, int> books; // score, id
         for(int j = 0 ; j < nBooks; j++)
         {
             flujoIn >> aux;
-            info.addBook(aux);
+            //info.addBook(aux);
+            books.insert(make_pair(score[aux], aux));
         }
-
+        for (auto itr = books.rbegin(); itr != books.rend(); itr++) {
+            info.addBook(itr->second);
+        }
 
 
         library[i] = info;
