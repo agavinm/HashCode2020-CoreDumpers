@@ -1,7 +1,9 @@
 #include <iostream>
+#include "readfile.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    readFile("CMakeLists.txt");
     return 0;
 }
-srgmçsdfkmgksdfm
+
+
