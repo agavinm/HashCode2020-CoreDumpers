@@ -9,8 +9,8 @@ public:
     problemInfo() = default;
     ~problemInfo() = default;
 
-    problemInfo(int Books, int Libs, int Days, std::vector<int> b,
-            std::vector<libraryInfo> l) :
+    problemInfo(int Books, int Libs, int Days, std::vector<int> &b,
+            std::vector<libraryInfo> &l) :
             B(Books), L(Libs), D(Days),
             books(b), libraries(l)  {}
 
