@@ -5,25 +5,26 @@
 #ifndef HASHCODE2020_BIBLIOTECA_H
 #define HASHCODE2020_BIBLIOTECA_H
 
+#include <iostream>
 #include <map>
 
 using namespace std;
 
 class biblioteca{
-    int gain = 0;
+public:
+    int id = 0;
+    double gain = 0;
     int nBooks = 0;
     int nDays = 0;
+    int shipsPerDay = 0;
+    int totalDays = 0;
     map<int, int> books;
 
-    biblioteca(int nB, int nD):nBooks(nB),nDays(nD){}
+    biblioteca(int i, int nB, int nD, int sD, int tD):id(i),nBooks(nB),nDays(nD), shipsPerDay(sD), totalDays(tD){}
 
     void addBook(int id, int b){
-        books.insert(id, b);
+        books.insert(make_pair(id, b));
         gain += b;
-    }
-
-    void endAdding(){
-        gain /= nBooks;
     }
 };
 
