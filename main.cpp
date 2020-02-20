@@ -34,7 +34,7 @@ void readFile(string fileIn, vector<biblioteca> &librarys, vector<int> &books){
 }
 
 int main() {
-    string file = "C:\\Users\\Saul\\Documents\\GitHub\\HashCode2020\\problema\\f_libraries_of_the_world.txt";
+    string file = "C:\\Users\\Saul\\Documents\\GitHub\\HashCode2020\\problema\\b_read_on.txt";
 
     vector<biblioteca> librarys;
     vector<int> books;
