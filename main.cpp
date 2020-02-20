@@ -3,6 +3,6 @@
 
 #include "problemInfo.h"
 int main() {
-    problemInfo pi = readFile("problema/a_example.txt");
+    problemInfo pi = readFile("problema/f_libraries_of_the_world.txt");
     return 0;
 }
