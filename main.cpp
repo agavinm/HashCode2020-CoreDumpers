@@ -1,10 +1,6 @@
 #include <iostream>
-#include "readfile.h"
 
 int main() {
-    readFile("CMakeLists.txt");
+    std::cout << "Me cago en mi vida" << std::endl;
     return 0;
-
 }
-
-
