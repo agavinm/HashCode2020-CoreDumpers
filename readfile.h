@@ -1,7 +1,5 @@
 #pragma once
 
-#ifndef _PLY_READER_H_
-#define _PLY_READER_H_
 
 #include <iostream>
 #include <string>
@@ -41,7 +39,7 @@ problemInfo readFile( std::string fileIn) {
     {
         flujoIn >> nBooks >> signupTime >> shipsPerDay;
 
-        libraryInfo info(nBooks, signupTime, shipsPerDay);
+        libraryInfo info(nBooks, signupTime, shipsPerDay, i);
 
 
         for(int j = 0 ; j < nBooks; j++)
@@ -62,4 +60,3 @@ problemInfo readFile( std::string fileIn) {
     return output;
 }
 
-#endif
