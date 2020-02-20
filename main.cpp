@@ -34,7 +34,7 @@ void readFile(string fileIn, vector<biblioteca> &librarys, vector<int> &books){
 }
 
 int main() {
-    string file = "C:\\Users\\Saul\\Documents\\GitHub\\HashCode2020\\problema\\b_read_on.txt";
+    string file = "C:\\Users\\Saul\\Documents\\GitHub\\HashCode2020\\problema\\d_tough_choices.txt";
 
 
 
@@ -68,11 +68,13 @@ int main() {
                 booksToAdd.push_back(l.first);
             }
         }
-        flujoOut << b.id << " " << booksToAdd.size() << endl;
-        for(int i : booksToAdd){
-            flujoOut << i << " ";
+        if(!booksToAdd.empty()){
+            flujoOut << b.id << " " << booksToAdd.size() << endl;
+            for(int i : booksToAdd){
+                flujoOut << i << " ";
+            }
+            flujoOut << endl;
         }
-        flujoOut << endl;
         booksToAdd.clear();
     }
     flujoOut.close();
