@@ -3,4 +3,4 @@ project(HashCode2020)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(HashCode2020 main.cpp cmake-build-debug/readfile.h)
+add_executable(HashCode2020 main.cpp readfile.h)
