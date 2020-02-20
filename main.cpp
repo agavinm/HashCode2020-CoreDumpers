@@ -1,6 +1,8 @@
 #include <iostream>
+#include "readfile.h"
 
+#include "problemInfo.h"
 int main() {
-    std::cout << "Me cago en mi vida" << std::endl;
+    problemInfo pi = readFile("problema/a_example.txt");
     return 0;
 }
