@@ -34,50 +34,61 @@ void readFile(string fileIn, vector<biblioteca> &librarys, vector<int> &books){
 }
 
 int main() {
-    string file = "C:\\Users\\Saul\\Documents\\GitHub\\HashCode2020\\problema\\d_tough_choices.txt";
+    const string files[] = {"a_example", "b_read_on", "c_incunabula", "d_tough_choices", "e_so_many_books", "f_libraries_of_the_world"};
 
+    for (int i = 0; i < 6; i++) {
+        vector<biblioteca> librarys;
+        vector<int> books;
+        readFile("../problema/" + files[i] + ".txt", librarys, books);
 
+        sort(librarys.begin(), librarys.end(), [](const biblioteca &lhs, const biblioteca &rhs) {
+            return ((double) 0.45 * lhs.gain) / (double) lhs.nDays + ((double) 0.55 * lhs.gain) / (double) (lhs.totalDays - lhs.nDays)
+                   > ((double) 0.45 * rhs.gain) / (double) rhs.nDays + ((double) 0.55 * rhs.gain) / (double) (rhs.totalDays - rhs.nDays);
+        });
 
-    vector<biblioteca> librarys;
-    vector<int> books;
-    readFile(file, librarys, books);
-
-    sort(librarys.begin(), librarys.end(), [](const biblioteca& lhs, const biblioteca& rhs) {
-        return 0.25*lhs.gain/lhs.nDays + 0.75*lhs.gain/(lhs.totalDays-lhs.nDays)
-        > 0.25*rhs.gain/rhs.nDays + 0.75*rhs.gain/(rhs.totalDays-rhs.nDays);
-    });
-
-    int bushyDays = 0;
-    vector<biblioteca> goodLibrarys;
-    for(int i = 0; i < librarys.size(); ++i){
-        bushyDays += librarys[i].nDays;
-        if(bushyDays <= librarys[i].totalDays){
-            goodLibrarys.push_back(librarys[i]);
-        }
-    }
-    string output = file+"_solution.txt";
-    fstream flujoOut;
-    flujoOut.open(output.c_str(), ios::out);
-    flujoOut << goodLibrarys.size() << endl;
-    map<int,int> booksIncluded;
-    for(biblioteca b : goodLibrarys){
-        vector<int> booksToAdd;
-        for(pair<int,int> l : b.books){
-            if(booksIncluded.count(l.first) == 0) {
-                booksIncluded.insert(make_pair(l.first, l.second));
-                booksToAdd.push_back(l.first);
+        int bushyDays = 0;
+        vector<biblioteca> goodLibrarys;
+        for (int i = 0; i < librarys.size(); ++i) {
+            bushyDays += librarys[i].nDays;
+            if (bushyDays <= librarys[i].totalDays) {
+                goodLibrarys.push_back(librarys[i]);
             }
         }
-        if(!booksToAdd.empty()){
-            flujoOut << b.id << " " << booksToAdd.size() << endl;
-            for(int i : booksToAdd){
-                flujoOut << i << " ";
+        string output = "../problema/" + files[i] + "_solution.txt";
+        fstream flujoOut;
+        flujoOut.open(output.c_str(), ios::out);
+        flujoOut << goodLibrarys.size() << endl;
+        map<int, int> booksIncluded;
+        bool first = true;
+        for (biblioteca b : goodLibrarys) {
+            vector<int> booksToAdd;
+            for (pair<int, int> l : b.books) {
+                if (booksIncluded.count(l.first) == 0) {
+                    booksIncluded.insert(make_pair(l.first, l.second));
+                    booksToAdd.push_back(l.first);
+                }
             }
-            flujoOut << endl;
+            if (!booksToAdd.empty()) {
+                if (first) {
+                    first = false;
+                }
+                else {
+                    flujoOut << endl;
+                }
+                flujoOut << b.id << " " << booksToAdd.size() << endl;
+                bool fff = true;
+                for (int i : booksToAdd) {
+                    if (fff)
+                        fff = false;
+                    else
+                        flujoOut << " ";
+                    flujoOut << i;
+                }
+            }
+            booksToAdd.clear();
         }
-        booksToAdd.clear();
+        flujoOut.close();
     }
-    flujoOut.close();
     return 0;
 }
 
