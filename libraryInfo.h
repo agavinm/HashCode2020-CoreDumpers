@@ -1,8 +1,6 @@
-#pragma once
 #include <vector>
 
-class libraryInfo{
-
+class libraryInfo {
 public:
     libraryInfo() = default;
     ~libraryInfo() = default;
@@ -16,5 +14,4 @@ public:
     }
     int nBooks, signupTime, shipsPerDay, ID;
     std::vector<int> books;
-
 };

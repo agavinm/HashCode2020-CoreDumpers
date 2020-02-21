@@ -1,10 +1,7 @@
-#pragma once
-
 #include <vector>
 #include "libraryInfo.h"
 
-class problemInfo
-{
+class problemInfo {
 public:
     problemInfo() = default;
     ~problemInfo() = default;
@@ -17,5 +14,4 @@ public:
     int B, D, L;
     std::vector<int> books;
     std::vector<libraryInfo> libraries;
-
 };

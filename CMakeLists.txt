@@ -7,6 +7,5 @@ add_executable(HashCode2020
         main.cpp
         readfile.h
         libraryInfo.h
-        problemInfo.h
-        solution.h writefile.h resul.h)
+        problemInfo.h)
 
